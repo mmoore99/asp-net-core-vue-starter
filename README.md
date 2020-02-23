@@ -1,8 +1,12 @@
 ﻿# ASP.NET Core Vue Starter
 
-The repository contains an ASP.&#8203;NET Core + Vue.js starter template. The template is created by Vue CLI 3.0 with a new plugin based architecture allowing developers to interactively scaffold a new project with just a one command.
+The repository contains an ASP.&#8203;NET Core + Vue.js starter template. The template runs on ASP.NET Core 3.1 and is created by Vue CLI 4.0 with a new plugin based architecture allowing developers to interactively scaffold a new project with just a one command.
 
 Original article how to create the starter template is available [here](https://medium.com/software-ateliers/asp-net-core-vue-template-with-custom-configuration-using-cli-3-0-8288e18ae80b).
+
+[![Nuget](https://img.shields.io/nuget/v/SoftwareAteliers.AspNetCoreVueStarter.svg?style=flat&color=2196f3)](https://www.nuget.org/packages/SoftwareAteliers.AspNetCoreVueStarter/)
+
+> For ASP.NET Core 2.2 template use [release v1.1.0](https://github.com/SoftwareAteliers/asp-net-core-vue-starter/releases/tag/1.1.0)
 
 ---
 
@@ -23,12 +27,12 @@ Original article how to create the starter template is available [here](https://
 
 ## Used Technology Stack
 
-**ASP.NET Core 2.2:**
+**ASP.NET Core 3.1:**
 
 * Web.API
-* JavaScript Services middleware to integrate with client app
+* Vue CLI and JavaScript Services middlewares to integrate with client app
 
-**Vue.js with CLI 3.0 supporting optional integrations:**
+**Vue.js with CLI 4.0 supporting optional integrations:**
 
 * TypeScript
 * Progressive Web App
@@ -41,9 +45,9 @@ Original article how to create the starter template is available [here](https://
 
 ## Prerequisites
 
-* [.NET Core](https://www.microsoft.com/net/download/windows)
+* [.NET Core](https://www.microsoft.com/net/download/windows) >= 3.1
 * [NodeJS](https://nodejs.org/) >= 8.9
-* [Vue CLI](https://cli.vuejs.org/) >= 3.0
+* [Vue CLI](https://cli.vuejs.org/) >= 4.0
 * Your favourite editor (I prefer [VS Code](https://code.visualstudio.com/)), or VS 2017/19
 
 ---
@@ -62,7 +66,7 @@ or you can use .NET Core CLI templates:
 
 * Initialize the project: `dotnet new vue -o MyProject`
 
-## Scaffold Vue.js app with custom configuration
+## (Optional) Scaffold Vue.js app with custom configuration
 
 If you prefer to overwrite default Vue client app with custom settings, take the following steps:
 
@@ -77,7 +81,7 @@ Now application is ready to run.
 
 ## Run the application
 
-You have two choices when it comes to how you prefer to run the app. You can either use the command line or the build-in run command.
+You have three choices when it comes to how you prefer to run the app. You can either use the command line or the build-in run command.
 
 ### 1. Using the command line
 
@@ -89,9 +93,19 @@ You have two choices when it comes to how you prefer to run the app. You can eit
 
 > It will take some time during the first run to download all client side dependencies.
 
+### 3. Using docker
+
+* Run the following command in a cmd window to build the docker image:
+`docker build -t <IMAGE_NAME> .`
+
+* Run the application in a cmd window by this command:
+`docker run -d -p 5000:80 <IMAGE_NAME>`
+
 ## View your application running
 
 Browse to [http://localhost:5000](http://localhost:5000) for ASP.&#8203;NET Core + Vue app or browse to [http://localhost:8080](http://localhost:8080) for Vue app only.
+
+![Application screenshot](./screenshot.png)
 
 ## Recommended plugin for debugging Vue
 
@@ -110,14 +124,18 @@ Want to file a bug, contribute some code, or improve documentation? Excellent! P
 Special thanks to everyone who helped and contributed to this project!
 
 * [@jdebarochez](https://github.com/jdebarochez)
+* [@arisliang](https://github.com/arisliang)
+* [@dotnetshadow](https://github.com/dotnetshadow)
+* [@NickStees](https://github.com/NickStees)
+* [@wallyjue](https://github.com/wallyjue)
 
 ---
 
 ## License
 
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](/content/LICENSE)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://mit-license.org/)
 
-Copyright &copy; 2018 - 2019 [Software Ateliers](https://github.com/SoftwareAteliers)
+Copyright &copy; 2018 - 2020 [Software Ateliers](https://github.com/SoftwareAteliers)
 
 ## Where to find me
 
