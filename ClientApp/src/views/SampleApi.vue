@@ -12,28 +12,28 @@
 </template>
 
 <script>
-export default {
-  name: 'sample-api',
-  data () {
-    return {
-      values: []
-    }
-  },
-  created () {
-    // Send request to the ASP.NET Core application.
-    // No need to specify the host:port since it all runs from the same location
-    return fetch('/api/SampleData/WeatherForecasts')
-      .then(res => res.json())
-      .then(data => { this.values = data })
-  },
-  methods: {
-    onTryPost () {
-      return fetch('/api/SampleData', { method: 'POST' })
+  export default {
+    name: 'sample-api',
+    data() {
+      return {
+        values: []
+      };
+    },
+    created() {
+      // Send request to the ASP.NET Core application.
+      // No need to specify the host:port since it all runs from the same location
+      return fetch('/api/SampleData/WeatherForecasts')
         .then(res => res.json())
-        .then(data => { this.values = data })
+        .then(data => { this.values = data; });
+    },
+    methods: {
+      onTryPost() {
+        return fetch('/api/SampleData', { method: 'POST' })
+          .then(res => res.json())
+          .then(data => { this.values = data; });
+      }
     }
-  }
-}
+  };
 </script>
 
 <style scoped>
