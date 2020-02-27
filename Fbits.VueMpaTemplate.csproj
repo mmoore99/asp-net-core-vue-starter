@@ -29,10 +29,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="ClientApp\tsconfig.json" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="README.md" />
     <None Include="Views\Home\Index.cshtml" />
   </ItemGroup>
