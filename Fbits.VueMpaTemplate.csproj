@@ -11,8 +11,8 @@
     <Company>Software Ateliers</Company>
     <Description>ASP.NET Core + Vue.js starter project</Description>
     <Copyright>MIT 2020 Software Ateliers</Copyright>
-    <AssemblyName>AspNetCoreVueStarter</AssemblyName>
-    <RootNamespace>AspNetCoreVueStarter</RootNamespace>
+    <AssemblyName>Fbits.VueMpaTemplate</AssemblyName>
+    <RootNamespace>Fbits.VueMpaTemplate</RootNamespace>
     <Version>2.3.0</Version>
     <AssemblyVersion>2.3.0.0</AssemblyVersion>
     <FileVersion>2.3.0.0</FileVersion>
@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.1" />
-    <PackageReference Include="VueCliMiddleware" Version="3.1.1" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,5 +1,5 @@
 ﻿module.exports = {
     devServer: {
-        progress: false
+        //progress: false
     }
 }

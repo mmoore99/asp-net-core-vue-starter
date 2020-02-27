@@ -1,3 +1,4 @@
+using AspNetCoreVueStarter.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices;
@@ -67,7 +68,6 @@ namespace AspNetCoreVueStarter
                         regex: "Compiled successfully");
                 }
 
-                // Add MapRazorPages if the app uses Razor Pages. Since Endpoint Routing includes support for many frameworks, adding Razor Pages is now opt -in.
                 endpoints.MapRazorPages();
             });
 
@@ -75,6 +75,16 @@ namespace AspNetCoreVueStarter
             {
                 spa.Options.SourcePath = "ClientApp";
             });
+
+            //app.UseSpa(spa =>
+            //{
+            //    spa.Options.SourcePath = "ClientApp";
+
+            //    if (env.IsDevelopment())
+            //    {
+            //        spa.UseVueDevelopmentServer(npmScript: "serve");
+            //    }
+            //});
         }
     }
 }
