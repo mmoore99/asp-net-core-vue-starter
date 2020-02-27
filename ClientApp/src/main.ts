@@ -13,6 +13,8 @@ Vue.config.productionTip = false;
 
 Vue.filter('date', dateFilter);
 
+debugger;
+
 new Vue({
   vuetify,
   router,
