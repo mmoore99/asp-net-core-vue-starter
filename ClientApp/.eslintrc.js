@@ -19,7 +19,8 @@ module.exports = {
     "quotes": [1, "double"],
     "no-trailing-spaces": 0,
     "padded-blocks": 0,
-    "spaced-comment": 0
+    "spaced-comment": 0,
+    "no-multiple-empty-lines": 1
   },
   parserOptions: {
     parser: 'babel-eslint'

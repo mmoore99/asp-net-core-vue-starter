@@ -2,22 +2,22 @@
     ViewBag.Title = "Home Page";
 }
 
-    <div class="text-center">
+<div id="app" class="">
+    <div class="">
         <h1>Hello World from Home</h1>
-        <div id="app" class="row"></div>
     </div>
+</div>
 
 @section scripts {
     <script src="~/dist/js/home/index.js" asp-append-version="true"></script>
 
     <script type="text/javascript">
-        var fb = window.fb || {};
 
         function domReady() {
             const _urls = {
             };
-            //fb.module.init(_urls);
-            fb.initializePage(_urls);
+            // window.fb must be created and initialized in the corresponding index.js file
+            window.fb.initializePage(_urls);
         }
 
         if (document.readyState === "complete" || document.readyState !== "loading" && !document.documentElement.doScroll) {
@@ -25,5 +25,6 @@
         } else {
             document.addEventListener("DOMContentLoaded", domReady);
         }
+
     </script>
 }
