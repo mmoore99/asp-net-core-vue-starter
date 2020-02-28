@@ -1,10 +1,29 @@
-﻿<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
-</head>
-<body>
-    <h1>Hello World - New</h1>
-</body>
-</html>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+    <div class="text-center">
+        <h1>Hello World from Home</h1>
+        <div id="app" class="row"></div>
+    </div>
+
+@section scripts {
+    <script src="~/dist/js/home/index.js" asp-append-version="true"></script>
+
+    <script type="text/javascript">
+        var fb = window.fb || {};
+
+        function domReady() {
+            const _urls = {
+            };
+            //fb.module.init(_urls);
+            fb.initializePage(_urls);
+        }
+
+        if (document.readyState === "complete" || document.readyState !== "loading" && !document.documentElement.doScroll) {
+            domReady();
+        } else {
+            document.addEventListener("DOMContentLoaded", domReady);
+        }
+    </script>
+}

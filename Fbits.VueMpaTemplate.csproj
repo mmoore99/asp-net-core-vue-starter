@@ -30,7 +30,8 @@
 
   <ItemGroup>
     <None Include="README.md" />
-    <None Include="Views\Home\Index.cshtml" />
+    <None Include="Views\Shared\Error.cshtml" />
+    <None Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

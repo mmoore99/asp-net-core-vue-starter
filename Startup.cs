@@ -59,14 +59,14 @@ namespace AspNetCoreVueStarter
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
 
-                if (env.IsDevelopment())
-                {
-                    endpoints.MapToVueCliProxy(
-                        "{*path}",
-                        new SpaOptions { SourcePath = "ClientApp" },
-                        npmScript: "serve",
-                        regex: "Compiled successfully");
-                }
+                //if (env.IsDevelopment())
+                //{
+                //    endpoints.MapToVueCliProxy(
+                //        "{*path}",
+                //        new SpaOptions { SourcePath = "ClientApp" },
+                //        npmScript: "serve",
+                //        regex: "Compiled successfully");
+                //}
 
                 endpoints.MapRazorPages();
             });
