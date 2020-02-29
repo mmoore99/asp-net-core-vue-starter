@@ -1,11 +1,9 @@
-using AspNetCoreVueStarter.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.SpaServices;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using VueCliMiddleware;
+using Westwind.AspNetCore.LiveReload;
 
 namespace AspNetCoreVueStarter
 {
@@ -18,22 +16,31 @@ namespace AspNetCoreVueStarter
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
 
-            // Add AddRazorPages if the app uses Razor Pages.
-            services.AddRazorPages();
+            var razorPages = services.AddRazorPages();
+            var mvc = services.AddControllersWithViews();
+
+
+            // following is required to allow razor views and pages to auto-reload
+            #if (DEBUG)
+            mvc.AddRazorRuntimeCompilation();
+            razorPages.AddRazorRuntimeCompilation();
+            #endif
+
+            services.AddLiveReload(config =>
+            {
+                // optional - use config instead
+                //config.LiveReloadEnabled = true;
+                //config.FolderToMonitor = Path.GetFullname(Path.Combine(Env.ContentRootPath,"..")) ;
+            });
 
             // In production, the Vue files will be served from this directory
-            services.AddSpaStaticFiles(configuration =>
-            {
-                configuration.RootPath = "ClientApp/dist";
-            });
+            services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -47,6 +54,9 @@ namespace AspNetCoreVueStarter
                 app.UseHsts();
                 app.UseHttpsRedirection();
             }
+
+            // Before any other output generating middleware handlers
+            app.UseLiveReload();
 
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
@@ -71,10 +81,7 @@ namespace AspNetCoreVueStarter
                 endpoints.MapRazorPages();
             });
 
-            app.UseSpa(spa =>
-            {
-                spa.Options.SourcePath = "ClientApp";
-            });
+            app.UseSpa(spa => { spa.Options.SourcePath = "ClientApp"; });
 
             //app.UseSpa(spa =>
             //{

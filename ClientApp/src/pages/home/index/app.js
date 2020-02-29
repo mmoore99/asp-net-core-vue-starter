@@ -1,5 +1,5 @@
 import Vue from "vue";
-//Vue.config.devtools = true;
+//Vue.config.devtools = true;  
 Vue.config.productionTip = false;
 
 window.fb = {
@@ -16,6 +16,7 @@ window.fb = {
       data: {
       },
       created() {
+        console.log("in created");
       },
       mounted() {
 
