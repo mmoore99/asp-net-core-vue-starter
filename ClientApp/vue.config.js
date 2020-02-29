@@ -22,7 +22,7 @@ module.exports = {
   pages,
   outputDir: "../wwwroot/dist/",
   filenameHashing: false,
-  lintOnSave: false,
+  lintOnSave: true,
   devServer: {
     //progress: false
   },

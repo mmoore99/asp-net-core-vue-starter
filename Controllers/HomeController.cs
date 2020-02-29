@@ -8,5 +8,10 @@ namespace Fbits.VueMpaTemplate.Controllers
         {
             return View();
         }
+
+        public IActionResult SampleApi()
+        {
+            return View();
+        }
     }
 }
