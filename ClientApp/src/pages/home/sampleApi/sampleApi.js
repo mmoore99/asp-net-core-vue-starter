@@ -1,7 +1,5 @@
 import Vue from "vue";
-import NavBar from "@/components/NavBar.vue";
-import HelloWorld from "./HelloWorld.vue";
-//Vue.config.devtools = true;  
+import SampleApi from "./SampleApi.vue";
 Vue.config.productionTip = false;
 
 window.fb = {
@@ -9,15 +7,13 @@ window.fb = {
 
     initializePage() {
         this.vueApp = this.initializeVue();
-        console.log(window.fb);
     },
 
     initializeVue() {
         const vue = new Vue({
             el: "#app",
             components: {
-                NavBar,
-                HelloWorld
+                SampleApi
             },
             data: {
             },

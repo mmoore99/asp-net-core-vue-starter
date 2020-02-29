@@ -1,0 +1,31 @@
+@{
+    ViewBag.Title = "";
+}
+
+<div id="app" class="">
+    <div class="">
+
+    </div>
+</div>
+
+@section scripts {
+    @*Load page related static assets here*@
+    <script src="~/dist/js/" asp-append-version="true"></script>
+
+    <script type="text/javascript">
+
+        function domReady() {
+            const _urls = {
+            };
+            // window.fb must be created and initialized in the corresponding index.js file
+            window.fb.initializePage(_urls);
+        }
+
+        if (document.readyState === "complete" || document.readyState !== "loading" && !document.documentElement.doScroll) {
+            domReady();
+        } else {
+            document.addEventListener("DOMContentLoaded", domReady);
+        }
+
+    </script>
+}
