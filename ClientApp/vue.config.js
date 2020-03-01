@@ -28,6 +28,7 @@ module.exports = {
     runtimeCompiler: true,
     pages,
     outputDir: "../wwwroot/dist/",
+    publicPath: "/dist/",
     filenameHashing: false,
     lintOnSave: true,
     devServer: {
@@ -35,7 +36,27 @@ module.exports = {
     
     },
 
-    configureWebpack: config => {
+    configureWebpack:  {
+
+        devServer: {
+            stats: 'verbose',
+
+            // See the following warning when using a string in the proxy option
+            //     https://cli.vuejs.org/config/#devserver-proxy
+            //     When devServer.proxy is set to a string, only XHR requests will be proxied.
+            //     If you want to test an API URL, don't open it in the browser, use an API tool like Postman instead.
+            // proxy: process.env.ASPNET_URL || 'https://localhost:44345'
+
+            // using a proxy with object to avaoid issue discussed above
+            // When running in IISExpress, the env variable wont be provided. Hard code it here based on your launchSettings.json
+            proxy: {
+                '^/': {
+                    //target: process.env.ASPNET_URL || 'https://localhost:44345'
+                    target: 'https://localhost:5001'
+                }
+            }
+        },
+
 
         // Use source map for debugging in VS and VS Code
         // devtool: 'source-map',
@@ -47,7 +68,7 @@ module.exports = {
                     "./ClientApp/src"
                 );
                 return `webpack:///${resourcePath}?${info.loaders}`;
-            };
+            }
         }
     },
 

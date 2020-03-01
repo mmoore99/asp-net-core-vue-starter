@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.SpaServices;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using VueCliMiddleware;
 using Westwind.AspNetCore.LiveReload;
 
 namespace AspNetCoreVueStarter
@@ -68,6 +70,15 @@ namespace AspNetCoreVueStarter
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
+
+                if (env.IsDevelopment())
+                {
+                    endpoints.MapToVueCliProxy(
+                        "{*path}",
+                        new SpaOptions {SourcePath = "ClientApp"},
+                        npmScript: "dev",
+                        regex: "Build complete");
+                }
 
                 //if (env.IsDevelopment())
                 //{

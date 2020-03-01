@@ -15,7 +15,7 @@ namespace VueCliMiddleware
         /// Handles requests by passing them through to an instance of the vue-cli server.
         /// This means you can always serve up-to-date CLI-built resources without having
         /// to run the vue-cli server manually.
-        ///
+        /// 
         /// This feature should only be used in development. For production deployments, be
         /// sure not to enable the vue-cli server.
         /// </summary>
@@ -24,13 +24,14 @@ namespace VueCliMiddleware
         /// <param name="port">Specify vue cli server port number. If &lt; 80, uses random port. </param>
         /// <param name="runner">Specify the runner, Npm and Yarn are valid options. Yarn support is HIGHLY experimental.</param>
         /// <param name="regex">Specify a custom regex string to search for in the log indicating proxied server is running. VueCli: "running at", QuasarCli: "Compiled successfully"</param>
-        public static void UseVueCli(
-            this ISpaBuilder spaBuilder,
+        /// <param name="forceKill"></param>
+        /// <param name="appBuilder"></param>
+        public static void UseVueCli(this ISpaBuilder spaBuilder,
             string npmScript = "serve",
             int port = 8080,
             ScriptRunnerType runner = ScriptRunnerType.Npm,
             string regex = VueCliMiddleware.DefaultRegex,
-            bool forceKill = false)
+            bool forceKill = false, IApplicationBuilder appBuilder = null)
         {
             if (spaBuilder == null)
             {
@@ -104,8 +105,7 @@ namespace VueCliMiddleware
 
 
         
-        private static RequestDelegate CreateProxyRequestDelegate(
-            IEndpointRouteBuilder endpoints,
+        private static RequestDelegate CreateProxyRequestDelegate(IEndpointRouteBuilder endpoints,
             SpaOptions options,
             string npmScript = "serve",
             int port = 8080,
@@ -139,7 +139,7 @@ namespace VueCliMiddleware
 
                 if (!string.IsNullOrWhiteSpace(npmScript))
                 {
-                    opt.UseVueCli(npmScript, port, runner, regex, forceKill);
+                    opt.UseVueCli(npmScript, port, runner, regex, forceKill, app);
                 }
             });
 
