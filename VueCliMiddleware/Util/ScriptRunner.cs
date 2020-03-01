@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
+using Fbits.VueMpaTemplate.Helpers.Extensions;
 using Microsoft.Extensions.Logging;
 
 namespace Fbits.VueMpaTemplate.VueCliMiddleware.Util
@@ -64,11 +65,12 @@ namespace Fbits.VueMpaTemplate.VueCliMiddleware.Util
             try { RunnerProcess?.WaitForExit(); } catch { }
         }
 
-        public ScriptRunner(string workingDirectory, string scriptName, string arguments, IDictionary<string, string> envVars, ScriptRunnerType runner)
+        public ScriptRunner(string sourcePath, string scriptName, string arguments, IDictionary<string, string> envVars, ScriptRunnerType runner, ILogger logger)
         {
-            if (string.IsNullOrEmpty(workingDirectory))
+            logger.LogInformation($"ScriptRunner: sourcePath={sourcePath}, scriptName={scriptName}, arguements={arguments}, scriptRunnerType={runner}, envVars={envVars.ToDebugString()}");
+            if (string.IsNullOrEmpty(sourcePath))
             {
-                throw new ArgumentException("Cannot be null or empty.", nameof(workingDirectory));
+                throw new ArgumentException("Cannot be null or empty.", nameof(sourcePath));
             }
 
             if (string.IsNullOrEmpty(scriptName))
@@ -97,7 +99,7 @@ namespace Fbits.VueMpaTemplate.VueCliMiddleware.Util
                 RedirectStandardInput = true,
                 RedirectStandardOutput = true,
                 RedirectStandardError = true,
-                WorkingDirectory = workingDirectory
+                WorkingDirectory = sourcePath
             };
 
             if (envVars != null)

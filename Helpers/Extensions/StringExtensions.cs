@@ -303,6 +303,11 @@ namespace Fbits.VueMpaTemplate.Helpers.Extensions
             return Regex.Replace(source, "[^0-9]", "");
         }
 
+        public static string ToDebugString<TKey, TValue>(this IDictionary<TKey, TValue> dictionary)
+        {
+            return "{" + string.Join(",", dictionary.Select(kv => kv.Key + "=" + kv.Value)) + "}";
+        }
+
     }
 
 

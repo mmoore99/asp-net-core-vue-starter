@@ -81,7 +81,7 @@ namespace Fbits.VueMpaTemplate.VueCliMiddleware
                 { "ASPNET_URL", address }
             };
 
-            var npmScriptRunner = new ScriptRunner(sourcePath, npmScriptName, $"--port {portNumber:0}", envVars, runner: runner);
+            var npmScriptRunner = new ScriptRunner(sourcePath, npmScriptName, $"--port {portNumber:0}", envVars, runner: runner, logger);
             AppDomain.CurrentDomain.DomainUnload += (s, e) => npmScriptRunner?.Kill();
             AppDomain.CurrentDomain.ProcessExit += (s, e) => npmScriptRunner?.Kill();
             AppDomain.CurrentDomain.UnhandledException += (s, e) => npmScriptRunner?.Kill();

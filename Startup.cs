@@ -1,4 +1,6 @@
 using Fbits.VueMpaTemplate.Configuration;
+using Fbits.VueMpaTemplate.Enums;
+using Fbits.VueMpaTemplate.Helpers.Extensions;
 using Fbits.VueMpaTemplate.VueCliMiddleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -12,19 +14,23 @@ namespace Fbits.VueMpaTemplate
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration, IWebHostEnvironment env)
+        public Startup(IConfiguration config, IWebHostEnvironment env)
         {
-            Configuration = configuration;
+            Config = config;
             Env = env;
+            ReloadType = config["RELOAD"].TryToParseEnum<ReloadTypes>();
         }
 
-        public IConfiguration Configuration { get; }
+        public IConfiguration Config { get; }
         public IWebHostEnvironment Env { get; }
+        public ReloadTypes ReloadType { get; set; }
+        public bool IsUseLiveReload => ReloadType == ReloadTypes.LiveReload;
+        public bool IsUseHotModuleReload => ReloadType == ReloadTypes.HotModuleReload;
 
         public void ConfigureServices(IServiceCollection services)
         {
             App.Services = services;
-            App.OnApplicationStart(Env, Configuration);
+            App.OnApplicationStart(Env, Config);
 
             services.AddControllersWithViews();
 
@@ -64,7 +70,7 @@ namespace Fbits.VueMpaTemplate
             }
 
             // Before any other output generating middleware handlers
-            //app.UseLiveReload();
+            if (IsUseLiveReload) app.UseLiveReload();
 
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
@@ -77,17 +83,21 @@ namespace Fbits.VueMpaTemplate
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
 
-                //if (env.IsDevelopment())
-                //{
-                //    endpoints.MapToVueCliProxy(
-                //        "{*path}",
-                //        new SpaOptions {SourcePath = "ClientApp"},
-                //        npmScript: "dev",
-                //        regex: "Build complete");
-                //}
-
-                if (env.IsDevelopment())
+                if (env.IsDevelopment() && IsUseLiveReload)
                 {
+                    // this will automatically run "npm run dev" which will build client app and watch for changes
+                    // all web calls wil go to localhost:5001
+                    endpoints.MapToVueCliProxy(
+                        "{*path}",
+                        new SpaOptions { SourcePath = "ClientApp" },
+                        npmScript: "dev",
+                        regex: "Build complete");
+                }
+
+                if (env.IsDevelopment() && IsUseHotModuleReload)
+                {
+                    // this will automatically run "npm run serve" which will build client app and run dev server
+                    // all web calls will go to dev server localhost:8080 which will proxy asp.net url's to localhost:5001
                     endpoints.MapToVueCliProxy(
                         "{*path}",
                         new SpaOptions {SourcePath = "ClientApp"},
@@ -99,16 +109,6 @@ namespace Fbits.VueMpaTemplate
             });
 
             app.UseSpa(spa => { spa.Options.SourcePath = "ClientApp"; });
-
-            //app.UseSpa(spa =>
-            //{
-            //    spa.Options.SourcePath = "ClientApp";
-
-            //    if (env.IsDevelopment())
-            //    {
-            //        spa.UseVueDevelopmentServer(npmScript: "serve");
-            //    }
-            //});
         }
     }
 }
