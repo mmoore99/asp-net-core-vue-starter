@@ -5,7 +5,7 @@ using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.SpaServices;
 
-namespace AspNetCoreVueStarter.Middleware
+namespace Fbits.VueMpaTemplate.Middleware
 {
     /// <summary>
     /// Extension methods for enabling React development server middleware support.

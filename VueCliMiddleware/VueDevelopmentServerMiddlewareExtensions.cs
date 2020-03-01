@@ -1,10 +1,11 @@
+using System;
+using Fbits.VueMpaTemplate.VueCliMiddleware.Util;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.SpaServices;
-using System;
 
-namespace VueCliMiddleware
+namespace Fbits.VueMpaTemplate.VueCliMiddleware
 {
     /// <summary>
     /// Extension methods for enabling Vue development server middleware support.

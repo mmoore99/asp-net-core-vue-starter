@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace AspNetCoreVueStarter.Models
+namespace Fbits.VueMpaTemplate.Models
 {
     public class WeatherForecast
     {

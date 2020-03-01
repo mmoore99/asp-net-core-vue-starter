@@ -2,15 +2,15 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 // Original Source: https://github.com/aspnet/JavaScriptServices
 
-using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using System.Text.RegularExpressions;
-using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
+using Microsoft.Extensions.Logging;
 
-namespace VueCliMiddleware
+namespace Fbits.VueMpaTemplate.VueCliMiddleware.Util
 {
     /// <summary>
     /// Executes the <c>script</c> entries defined in a <c>package.json</c> file,

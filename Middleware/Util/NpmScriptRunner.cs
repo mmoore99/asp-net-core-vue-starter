@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 using Microsoft.Extensions.Logging;
 
 // This is under the NodeServices namespace because post 2.1 it will be moved to that package
-namespace AspNetCoreVueStarter.Middleware.Util
+namespace Fbits.VueMpaTemplate.Middleware.Util
 {
     /// <summary>
     /// Executes the <c>script</c> entries defined in a <c>package.json</c> file,

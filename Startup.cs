@@ -1,22 +1,24 @@
+using Fbits.VueMpaTemplate.VueCliMiddleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using VueCliMiddleware;
 using Westwind.AspNetCore.LiveReload;
 
-namespace AspNetCoreVueStarter
+namespace Fbits.VueMpaTemplate
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
+            Env = env;
         }
 
         public IConfiguration Configuration { get; }
+        public IWebHostEnvironment Env { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -84,7 +86,7 @@ namespace AspNetCoreVueStarter
                 {
                     endpoints.MapToVueCliProxy(
                         "{*path}",
-                        new SpaOptions { SourcePath = "ClientApp" },
+                        new SpaOptions {SourcePath = "ClientApp"},
                         npmScript: "serve",
                         regex: "Compiled successfully");
                 }

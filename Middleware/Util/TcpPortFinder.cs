@@ -4,7 +4,7 @@
 using System.Net;
 using System.Net.Sockets;
 
-namespace AspNetCoreVueStarter.Middleware.Util
+namespace Fbits.VueMpaTemplate.Middleware.Util
 {
     internal static class TcpPortFinder
     {

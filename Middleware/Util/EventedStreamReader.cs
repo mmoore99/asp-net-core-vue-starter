@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace AspNetCoreVueStarter.Middleware.Util
+namespace Fbits.VueMpaTemplate.Middleware.Util
 {
     /// <summary>
     /// Wraps a <see cref="StreamReader"/> to expose an evented API, issuing notifications

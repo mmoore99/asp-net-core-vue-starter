@@ -1,11 +1,11 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace VueCliMiddleware
+namespace Fbits.VueMpaTemplate.VueCliMiddleware.Util
 {
     public static class PidUtils
     {

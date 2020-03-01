@@ -2,20 +2,19 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 // Original Source: https://github.com/aspnet/JavaScriptServices
 
+using System;
+using System.IO;
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Threading.Tasks;
-using System.Net;
-using System.Net.Sockets;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
-
 
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("VueCliMiddleware.Tests")]
-namespace VueCliMiddleware
+namespace Fbits.VueMpaTemplate.VueCliMiddleware.Util
 {
     internal static class LoggerFinder
     {

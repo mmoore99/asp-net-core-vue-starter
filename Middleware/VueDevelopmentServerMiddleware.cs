@@ -6,12 +6,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using AspNetCoreVueStarter.Middleware.Util;
+using Fbits.VueMpaTemplate.Middleware.Util;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.SpaServices;
 using Microsoft.Extensions.Logging;
 
-namespace AspNetCoreVueStarter.Middleware
+namespace Fbits.VueMpaTemplate.Middleware
 {
     internal static class VueDevelopmentServerMiddleware
     {

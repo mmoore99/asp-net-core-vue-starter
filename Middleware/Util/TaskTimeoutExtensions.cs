@@ -4,7 +4,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace AspNetCoreVueStarter.Middleware.Util
+namespace Fbits.VueMpaTemplate.Middleware.Util
 {
     internal static class TaskTimeoutExtensions
     {

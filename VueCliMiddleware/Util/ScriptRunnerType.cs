@@ -1,4 +1,4 @@
-﻿namespace VueCliMiddleware
+﻿namespace Fbits.VueMpaTemplate.VueCliMiddleware.Util
 {
     public enum ScriptRunnerType
     {

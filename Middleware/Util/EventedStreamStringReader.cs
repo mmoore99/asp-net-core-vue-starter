@@ -4,7 +4,7 @@
 using System;
 using System.Text;
 
-namespace AspNetCoreVueStarter.Middleware.Util
+namespace Fbits.VueMpaTemplate.Middleware.Util
 {
     /// <summary>
     /// Captures the completed-line notifications from a <see cref="EventedStreamReader"/>,

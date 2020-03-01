@@ -1,15 +1,15 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Logging;
 using System;
-using System.IO;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Fbits.VueMpaTemplate.VueCliMiddleware.Util;
 using Microsoft.AspNetCore.Hosting.Server.Features;
 using Microsoft.AspNetCore.SpaServices;
+using Microsoft.Extensions.Logging;
 
-namespace VueCliMiddleware
+namespace Fbits.VueMpaTemplate.VueCliMiddleware
 {
     internal static class VueCliMiddleware
     {
