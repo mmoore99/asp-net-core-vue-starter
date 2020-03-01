@@ -19,8 +19,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Fbits.LoggingExtensions.NLog" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.1" />
+    <PackageReference Include="Microsoft.Extensions.PlatformAbstractions" Version="1.1.0" />
+    <PackageReference Include="TimeZoneConverter" Version="3.2.0" />
+    <PackageReference Include="ValueInjecter" Version="3.2.0" />
     <PackageReference Include="WestWind.AspnetCore.LiveReload" Version="0.1.14" />
   </ItemGroup>
 
@@ -39,6 +43,12 @@
     <None Include="Views\Shared\Error.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
     <None Include="wwwroot\images\logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Helpers\Http\" />
+    <Folder Include="Helpers\Notifiers\" />
+    <Folder Include="Helpers\Parsers\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

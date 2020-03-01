@@ -1,3 +1,4 @@
+using Fbits.VueMpaTemplate.Configuration;
 using Fbits.VueMpaTemplate.VueCliMiddleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -22,6 +23,9 @@ namespace Fbits.VueMpaTemplate
 
         public void ConfigureServices(IServiceCollection services)
         {
+            App.Services = services;
+            App.OnApplicationStart(Env, Configuration);
+
             services.AddControllersWithViews();
 
             var razorPages = services.AddRazorPages();
