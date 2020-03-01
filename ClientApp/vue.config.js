@@ -47,12 +47,12 @@ module.exports = {
             //     If you want to test an API URL, don't open it in the browser, use an API tool like Postman instead.
             // proxy: process.env.ASPNET_URL || 'https://localhost:44345'
 
-            // using a proxy with object to avaoid issue discussed above
+            // using a proxy with object to avoid issue discussed above
             // When running in IISExpress, the env variable wont be provided. Hard code it here based on your launchSettings.json
             proxy: {
                 '^/': {
-                    //target: process.env.ASPNET_URL || 'https://localhost:44345'
-                    target: 'https://localhost:5001'
+                    target: process.env.ASPNET_URL || 'https://localhost:44345'
+                    //target: 'https://localhost:5001'
                 }
             }
         },

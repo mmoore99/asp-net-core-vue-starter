@@ -58,7 +58,7 @@ namespace AspNetCoreVueStarter
             }
 
             // Before any other output generating middleware handlers
-            app.UseLiveReload();
+            //app.UseLiveReload();
 
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
@@ -71,23 +71,23 @@ namespace AspNetCoreVueStarter
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
 
-                if (env.IsDevelopment())
-                {
-                    endpoints.MapToVueCliProxy(
-                        "{*path}",
-                        new SpaOptions {SourcePath = "ClientApp"},
-                        npmScript: "dev",
-                        regex: "Build complete");
-                }
-
                 //if (env.IsDevelopment())
                 //{
                 //    endpoints.MapToVueCliProxy(
                 //        "{*path}",
-                //        new SpaOptions { SourcePath = "ClientApp" },
-                //        npmScript: "serve",
-                //        regex: "Compiled successfully");
+                //        new SpaOptions {SourcePath = "ClientApp"},
+                //        npmScript: "dev",
+                //        regex: "Build complete");
                 //}
+
+                if (env.IsDevelopment())
+                {
+                    endpoints.MapToVueCliProxy(
+                        "{*path}",
+                        new SpaOptions { SourcePath = "ClientApp" },
+                        npmScript: "serve",
+                        regex: "Compiled successfully");
+                }
 
                 endpoints.MapRazorPages();
             });
