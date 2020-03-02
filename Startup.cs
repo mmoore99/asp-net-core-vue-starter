@@ -1,7 +1,7 @@
+using Fbits.VueMpaMiddleware;
 using Fbits.VueMpaTemplate.Configuration;
 using Fbits.VueMpaTemplate.Enums;
 using Fbits.VueMpaTemplate.Helpers.Extensions;
-using Fbits.VueMpaTemplate.VueCliMiddleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices;
@@ -50,6 +50,9 @@ namespace Fbits.VueMpaTemplate
                 //config.LiveReloadEnabled = true;
                 //config.FolderToMonitor = Path.GetFullname(Path.Combine(Env.ContentRootPath,"..")) ;
             });
+
+            // In production, the Vue files will be served from this directory
+            services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -70,6 +73,7 @@ namespace Fbits.VueMpaTemplate
             if (IsUseLiveReload) app.UseLiveReload();
 
             app.UseStaticFiles();
+            app.UseSpaStaticFiles();
 
             app.UseRouting();
 
@@ -102,6 +106,7 @@ namespace Fbits.VueMpaTemplate
                 }
 
                 endpoints.MapRazorPages();
+                app.UseSpa(spa => { spa.Options.SourcePath = "ClientApp"; });
             });
         }
     }
