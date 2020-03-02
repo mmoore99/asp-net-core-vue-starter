@@ -1,39 +1,39 @@
 {
-  "$schema": "http://json.schemastore.org/template",
-  "author": "SoftwareAteliers",
-  "classifications": ["Web", "SPA", "Vue.js"],
-  "identity": "SoftwareAteliers.AspNetCoreVueStarter",
-  "name": ".NET Core Vue.js",
-  "shortName": "vue",
-  "sourceName": "AspNetCoreVueStarter",
-  "preferNameDirectory": false,
-  "primaryOutputs": [{ "path": "AspNetCoreVueStarter.csproj" }],
-  "sources": [
-    {
-      "source": "./",
-      "target": "./",
-      "exclude": [".template.config/**"]
-    }
-  ],
-  "symbols": {
-    "skipBuild": {
-      "type": "parameter",
-      "datatype": "bool",
-      "description": "If specified, skips the automatic build of the project on create.",
-      "defaultValue": "false"
-    }
-  },
-  "postActions": [
-    {
-      "condition": "(!skipBuild)",
-      "description": "Restore, then build this project.",
-      "manualInstructions": [
+    "$schema": "http://json.schemastore.org/template",
+    "author": "FiddleBits",
+    "classifications": [ "Web", "MPA", "Vue.js" ],
+    "identity": "Fbits.VueMpaTemplate",
+    "name": ".NET Core Vue.js Multi Page",
+    "shortName": "vue-mp",
+    "sourceName": "Fbits.VueMpaTemplate",
+    "preferNameDirectory": true,
+    "primaryOutputs": [ { "path": "Fbits.VueMpaTemplate.csproj" } ],
+    "sources": [
         {
-          "text": "Run 'dotnet build'"
+            "source": "./",
+            "target": "./",
+            "exclude": [ ".template.config/**" ]
         }
-      ],
-      "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
-      "continueOnError": true
-    }
-  ]
+    ],
+    "symbols": {
+        "skipBuild": {
+            "type": "parameter",
+            "datatype": "bool",
+            "description": "If specified, skips the automatic build of the project on create.",
+            "defaultValue": "false"
+        }
+    },
+    "postActions": [
+        {
+            "condition": "(!skipBuild)",
+            "description": "Restore, then build this project.",
+            "manualInstructions": [
+                {
+                    "text": "Run 'dotnet build'"
+                }
+            ],
+            "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
+            "continueOnError": true
+        }
+    ]
 }

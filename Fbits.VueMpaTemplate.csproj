@@ -36,6 +36,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Templates\ViewTemplate.cshtml.template" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Templates\ViewTemplate.cshtml.template" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="README.md" />
     <None Include="Views\Shared\Error.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />

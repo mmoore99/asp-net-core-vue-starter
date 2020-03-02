@@ -70,15 +70,19 @@ namespace Fbits.VueMpaTemplate.Configuration
 
         public static string SetBuildConfiguration()
         {
+            // following allows inclusion of code with preprocessor directives /
+            // /see https://github.com/dotnet/templating/issues/1354
+            //-:cnd:noEmit
             #if DEBUG
             return DEVELOPMENT_BUILD_CONFIGURATION;
             #elif STAGE
-            return STAGING_BUILD_CONFIGURATION;
+                        return STAGING_BUILD_CONFIGURATION;
             #elif RELEASE
-            return PRODUCTION_BUILD_CONFIGURATION;
+                        return PRODUCTION_BUILD_CONFIGURATION;
             #elif LINUX
-            return LINUX_BUILD_CONFIGURATION;
+                        return LINUX_BUILD_CONFIGURATION;
             #endif
+            //+:cnd:noEmit
         }
 
         public static void InitializeNlog(string logFileName, bool isEnableInternalLog = false)
