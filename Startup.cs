@@ -18,7 +18,7 @@ namespace Fbits.VueMpaTemplate
         {
             Config = config;
             Env = env;
-            ReloadType = config["RELOAD"].TryToParseEnum<ReloadTypes>();
+            ReloadType = config["RELOAD"]?.TryToParseEnum<ReloadTypes>() ?? ReloadTypes.None;
         }
 
         public IConfiguration Config { get; }
@@ -50,9 +50,6 @@ namespace Fbits.VueMpaTemplate
                 //config.LiveReloadEnabled = true;
                 //config.FolderToMonitor = Path.GetFullname(Path.Combine(Env.ContentRootPath,"..")) ;
             });
-
-            // In production, the Vue files will be served from this directory
-            services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -73,7 +70,6 @@ namespace Fbits.VueMpaTemplate
             if (IsUseLiveReload) app.UseLiveReload();
 
             app.UseStaticFiles();
-            app.UseSpaStaticFiles();
 
             app.UseRouting();
 
@@ -81,7 +77,7 @@ namespace Fbits.VueMpaTemplate
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
 
                 if (env.IsDevelopment() && IsUseLiveReload)
                 {
@@ -107,8 +103,6 @@ namespace Fbits.VueMpaTemplate
 
                 endpoints.MapRazorPages();
             });
-
-            app.UseSpa(spa => { spa.Options.SourcePath = "ClientApp"; });
         }
     }
 }
