@@ -35,6 +35,10 @@ module.exports = {
         //progress: false
     
     },
+    // this is required in order to have css copied into dist folder when running "vue-cli-service build --watch"
+    css: {
+        extract: true
+    },
 
     configureWebpack:  {
 
